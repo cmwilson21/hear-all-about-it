@@ -13,7 +13,6 @@ const ArticleList = (articles) => {
       {articles.articles.map((article) => (
         <ArticleCard article={article} />
       ))}
-      Here is the list of news
     </div>
   );
 };
