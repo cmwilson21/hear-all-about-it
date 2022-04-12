@@ -26,7 +26,7 @@ function App() {
         <NavBar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/news" element={<ArticleList />} />
+          <Route path="/news" element={<ArticleList articles={articles} />} />
         </Routes>
       </Router>
     </div>
