@@ -14,7 +14,9 @@ const ArticleCard = (article) => {
       <br />
       Source: {article.article.source_id}
       <br />
-      <a href={article.article.link}>Read More.. </a>
+      <a target="_blank" href={article.article.link}>
+        Read More..{" "}
+      </a>
     </div>
   );
 };
