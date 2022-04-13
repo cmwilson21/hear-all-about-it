@@ -10,21 +10,12 @@ const ArticleList = (articles) => {
   return (
     <div>
       {/* {console.log(articles)} */}
+      {MenuListComposition()}
       {articles.articles.map((article) => {
         return <ArticleCard key={article.title} article={article} />;
       })}
     </div>
   );
-
-  // return (
-  //   <div>
-  //     {MenuListComposition()}
-  //     <h1>Article List</h1>
-  //     {articles.articles.map((article) => (
-  //       <ArticleCard article={article} />
-  //     ))}
-  //   </div>
-  // );
 };
 
 export default ArticleList;
