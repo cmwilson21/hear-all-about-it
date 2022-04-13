@@ -94,6 +94,7 @@ export default function MenuListComposition() {
                     <MenuItem onClick={handleClose}>CNN News</MenuItem>
                     <MenuItem onClick={handleClose}>Fox News</MenuItem>
                     <MenuItem onClick={handleClose}>Reuters News</MenuItem>
+                    <MenuItem onClick={handleClose}>Tech Crunch</MenuItem>
                   </MenuList>
                 </ClickAwayListener>
               </Paper>

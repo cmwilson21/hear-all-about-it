@@ -13,7 +13,7 @@ const ArticleCard = (article) => {
         component="img"
         height="250"
         width="auto"
-        image={article.article.image_url}
+        image={article.article.urlToImage}
         alt="news image"
       />
       <CardContent>
@@ -29,12 +29,12 @@ const ArticleCard = (article) => {
           gutterBottom
           color="text.secondary"
         >
-          {article.article.source_id}
+          {article.article.source.name}
         </Typography>
       </CardContent>
       <CardActions>
         <Button size="small">
-          <a href={article.article.link} target="_blank">
+          <a href={article.article.url} target="_blank">
             Read More
           </a>
         </Button>

@@ -8,17 +8,20 @@ import { API_KEY } from "./Globals";
 
 function App() {
   const [articles, setArticles] = useState([]);
-  const apiUrl = `https://newsdata.io/api/1/news?apikey=${API_KEY}&country=us,ca,gb`;
+  const apiUrl = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${API_KEY}`;
 
   useEffect(() => {
     const fetchArticles = async () => {
       const response = await fetch(apiUrl);
       const data = await response.json();
-      setArticles(data.results);
+      setArticles(data.articles);
+      // console.log("data", data);
+      // console.log("articles", articles);
     };
     fetchArticles();
   }, []);
-  // console.log("articles", articles[0].title);
+  // console.log("articles", articles.articles[0].source.name);
+  // console.log("articles", articles);
 
   return (
     <div className="App">
