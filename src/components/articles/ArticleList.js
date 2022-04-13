@@ -10,7 +10,8 @@ const ArticleList = (articles) => {
   return (
     <div>
       {/* {console.log(articles)} */}
-      {MenuListComposition()}
+      <h3>These are the latest headlines from around the world.</h3>
+      <div className="menu">{MenuListComposition()}</div>
       {articles.articles.map((article) => {
         return <ArticleCard key={article.title} article={article} />;
       })}
