@@ -1,5 +1,6 @@
 import { React, useState, useEffect } from "react";
 import ArticleCard from "./ArticleCard";
+import MenuListComposition from "./NetworkButton";
 
 const ArticleList = (articles) => {
   console.log("article list", articles.articles);
@@ -9,6 +10,7 @@ const ArticleList = (articles) => {
 
   return (
     <div>
+      {MenuListComposition()}
       <h1>Article List</h1>
       {articles.articles.map((article) => (
         <ArticleCard article={article} />
