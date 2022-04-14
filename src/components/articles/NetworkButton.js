@@ -87,14 +87,15 @@ export default function MenuListComposition() {
                     aria-labelledby="composition-button"
                     onKeyDown={handleListKeyDown}
                   >
-                    <MenuItem onClick={handleClose}>AP News</MenuItem>
                     <MenuItem onClick={handleClose}>ABC News</MenuItem>
+                    <MenuItem onClick={handleClose}>Associated Press</MenuItem>
                     <MenuItem onClick={handleClose}>BBC News</MenuItem>
                     <MenuItem onClick={handleClose}>CBS News</MenuItem>
                     <MenuItem onClick={handleClose}>CNN News</MenuItem>
                     <MenuItem onClick={handleClose}>Fox News</MenuItem>
-                    <MenuItem onClick={handleClose}>Reuters News</MenuItem>
-                    <MenuItem onClick={handleClose}>Tech Crunch</MenuItem>
+                    <MenuItem onClick={handleClose}>Politico</MenuItem>
+                    <MenuItem onClick={handleClose}>Reuters</MenuItem>
+                    <MenuItem onClick={handleClose}>Washington Post</MenuItem>
                   </MenuList>
                 </ClickAwayListener>
               </Paper>
