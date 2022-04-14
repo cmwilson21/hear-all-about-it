@@ -1,4 +1,4 @@
-import * as React from "react";
+import { React, useState, useRef, useEffect } from "react";
 import Button from "@mui/material/Button";
 import ClickAwayListener from "@mui/material/ClickAwayListener";
 import Grow from "@mui/material/Grow";
@@ -7,10 +7,11 @@ import Popper from "@mui/material/Popper";
 import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
 import Stack from "@mui/material/Stack";
+import Select from "react-select";
 
 export default function MenuListComposition(articles) {
-  const [open, setOpen] = React.useState(false);
-  const anchorRef = React.useRef(null);
+  const [open, setOpen] = useState(false);
+  const anchorRef = useRef(null);
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
@@ -34,22 +35,34 @@ export default function MenuListComposition(articles) {
   }
 
   // return focus to the button when we transitioned from !open -> open
-  const prevOpen = React.useRef(open);
-  React.useEffect(() => {
+  const prevOpen = useRef(open);
+  useEffect(() => {
     if (prevOpen.current === true && open === false) {
       anchorRef.current.focus();
     }
 
     prevOpen.current = open;
   }, [open]);
-  console.log("button page", articles);
+
   // create filter function to filter articles by source_id
-  const filterArticles = (articles, source_id) => {
-    return articles.filter((article) => article.source_id === source_id);
-  };
-  const [filteredArticles, setFilteredArticles] = useState(
-    filterArticles(articles.articles, "abc-news")
-  );
+  // const filterArticles = (articles, source_id) => {
+  //   return articles.filter((article) => article.source_id === source_id);
+  // };
+  // const [filteredArticles, setFilteredArticles] = useState(
+  //   filterArticles(articles.articles, "abc-news")
+  // );
+
+  const newsSources = [
+    { label: "ABC News", id: "abc-news", value: 1 },
+    { label: "Associated Press", id: "associated-press", value: 2 },
+    { label: "BBC News", id: "bbc-news", value: 3 },
+    { label: "CBS News", id: "cbs-news", value: 4 },
+    { label: "CNN", id: "cnn", value: 5 },
+    { label: "Fox News", id: "fox-news", value: 6 },
+    { label: "Politico", id: "politico", value: 7 },
+    { label: "Reuters", id: "reuters", value: 8 },
+    { label: "The Washington Post", id: "the-washington-post", value: 9 },
+  ];
 
   return (
     <Stack direction="row" spacing={2}>
@@ -95,7 +108,21 @@ export default function MenuListComposition(articles) {
                     aria-labelledby="composition-button"
                     onKeyDown={handleListKeyDown}
                   >
-                    <MenuItem id="abc-news" onClick={handleClose}>
+                    {newsSources.map((source) => (
+                      <MenuItem
+                        key={source.id}
+                        onClick={handleClose}
+                        // onClick={(e) => {
+                        //   setOpen(false);
+                        //   setFilteredArticles(
+                        //     filterArticles(articles.articles, source.id)
+                        //   );
+                        // }}
+                      >
+                        {source.label}
+                      </MenuItem>
+                    ))}
+                    {/* <MenuItem id="abc-news" onClick={handleClose}>
                       ABC News
                     </MenuItem>
                     <MenuItem id="associated-press" onClick={handleClose}>
@@ -121,7 +148,7 @@ export default function MenuListComposition(articles) {
                     </MenuItem>
                     <MenuItem id="the-washington-post" onClick={handleClose}>
                       Washington Post
-                    </MenuItem>
+                    </MenuItem> */}
                   </MenuList>
                 </ClickAwayListener>
               </Paper>
