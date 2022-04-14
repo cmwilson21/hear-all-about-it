@@ -8,7 +8,7 @@ import { API_KEY } from "./Globals";
 
 function App() {
   const [articles, setArticles] = useState([]);
-  const apiUrl = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${API_KEY}`;
+  const apiUrl = `https://newsapi.org/v2/top-headlines?sources=bbc-news,abc-news,fox-news,reuters,the-washington-post,politico,cbs-news,associated-press,cnn&apiKey=${API_KEY}`;
 
   useEffect(() => {
     const fetchArticles = async () => {
