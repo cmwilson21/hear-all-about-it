@@ -8,7 +8,7 @@ import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
 import Stack from "@mui/material/Stack";
 
-export default function MenuListComposition() {
+export default function MenuListComposition(articles) {
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
 
@@ -42,6 +42,14 @@ export default function MenuListComposition() {
 
     prevOpen.current = open;
   }, [open]);
+  console.log("button page", articles);
+  // create filter function to filter articles by source_id
+  const filterArticles = (articles, source_id) => {
+    return articles.filter((article) => article.source_id === source_id);
+  };
+  const [filteredArticles, setFilteredArticles] = useState(
+    filterArticles(articles.articles, "abc-news")
+  );
 
   return (
     <Stack direction="row" spacing={2}>
@@ -87,15 +95,33 @@ export default function MenuListComposition() {
                     aria-labelledby="composition-button"
                     onKeyDown={handleListKeyDown}
                   >
-                    <MenuItem onClick={handleClose}>ABC News</MenuItem>
-                    <MenuItem onClick={handleClose}>Associated Press</MenuItem>
-                    <MenuItem onClick={handleClose}>BBC News</MenuItem>
-                    <MenuItem onClick={handleClose}>CBS News</MenuItem>
-                    <MenuItem onClick={handleClose}>CNN News</MenuItem>
-                    <MenuItem onClick={handleClose}>Fox News</MenuItem>
-                    <MenuItem onClick={handleClose}>Politico</MenuItem>
-                    <MenuItem onClick={handleClose}>Reuters</MenuItem>
-                    <MenuItem onClick={handleClose}>Washington Post</MenuItem>
+                    <MenuItem id="abc-news" onClick={handleClose}>
+                      ABC News
+                    </MenuItem>
+                    <MenuItem id="associated-press" onClick={handleClose}>
+                      Associated Press
+                    </MenuItem>
+                    <MenuItem id="bbc-news" onClick={handleClose}>
+                      BBC News
+                    </MenuItem>
+                    <MenuItem id="cbs-news" onClick={handleClose}>
+                      CBS News
+                    </MenuItem>
+                    <MenuItem id="cnn" onClick={handleClose}>
+                      CNN News
+                    </MenuItem>
+                    <MenuItem id="fox-news" onClick={handleClose}>
+                      Fox News
+                    </MenuItem>
+                    <MenuItem id="politico" onClick={handleClose}>
+                      Politico
+                    </MenuItem>
+                    <MenuItem id="reuters" onClick={handleClose}>
+                      Reuters
+                    </MenuItem>
+                    <MenuItem id="the-washington-post" onClick={handleClose}>
+                      Washington Post
+                    </MenuItem>
                   </MenuList>
                 </ClickAwayListener>
               </Paper>
