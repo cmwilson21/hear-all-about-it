@@ -11,7 +11,9 @@ const ArticleList = (articles) => {
       <h3>These are the latest headlines from around the world.</h3>
       {/* <div className="menu">{MenuListComposition()}</div> */}
       {/* pass articles into the NetworkButton component */}
-      <MenuListComposition articles={articles} />
+      <div className="menu">
+        <MenuListComposition articles={articles} />
+      </div>
       {articles.articles.map((article) => {
         return <ArticleCard key={article.title} article={article} />;
       })}
