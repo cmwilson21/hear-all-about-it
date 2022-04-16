@@ -8,6 +8,7 @@ import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
 import Stack from "@mui/material/Stack";
 import Select from "react-select";
+import { useNavigate } from "react-router-dom";
 
 export default function MenuListComposition(articles) {
   const [open, setOpen] = useState(false);
@@ -44,22 +45,6 @@ export default function MenuListComposition(articles) {
 
     prevOpen.current = open;
   }, [open]);
-
-  // create filter function that filters articles based on the selected source_id
-
-  // const filterArticles = (articles, id) => {
-  //   return articles.articles.articles.filter((article) => {
-  //     // console.log("articles", article.source.id);
-  //     // console.log("filter agan", filterArticles(articles, "abc-news"));
-
-  //     // set maximum return to 12 articles
-  //     return article.source.id === id;
-  //   });
-  // };
-  // console log the filter articles function taking in the articles and the source id limiting api call to 12 articles
-  // console.log("filterArticles", filterArticles(articles, "abc-news"));
-
-  // console log the filter articles function taking in the articles and the source_id
 
   const newsSources = [
     { label: "All News", id: "all" },
@@ -123,17 +108,6 @@ export default function MenuListComposition(articles) {
                     onKeyDown={handleListKeyDown}
                   >
                     {newsSources.map((source) => (
-                      // selecting the menu item displays the articles for that source
-                      // <MenuItem
-                      //   key={source.id}
-                      //   onClick={() => {
-                      //     setOpen(false);
-                      //     handleClose(true);
-                      //     setArts(filterArticles(articles, source.id));
-                      //   }}
-                      // >
-                      //   {source.label}
-                      // </MenuItem>
                       <MenuItem
                         key={source.id}
                         onClick={() => {
