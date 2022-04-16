@@ -61,6 +61,10 @@ export default function MenuListComposition(articles) {
 
   // create function to filter the articles based on the selected source.id if the source.id is not equal to all then filter the articles based on the selected source.id
   const filterArticles = (articles, id) => {
+    // create variable to display the articles based on the selected source.id
+    let filteredArticles = [];
+    // if the source.id is equal to all then display all the articles, else filter the articles based on the selected source.id and display those articles
+
     if (id === "all") {
       return articles;
     } else {

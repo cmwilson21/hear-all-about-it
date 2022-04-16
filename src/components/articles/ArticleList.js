@@ -7,10 +7,7 @@ const ArticleList = (articles) => {
 
   return (
     <div>
-      {/* {console.log(articles)} */}
       <h3>These are the latest headlines from around the world.</h3>
-      {/* <div className="menu">{MenuListComposition()}</div> */}
-      {/* pass articles into the NetworkButton component */}
       <div className="menu">
         <MenuListComposition articles={articles} />
       </div>
