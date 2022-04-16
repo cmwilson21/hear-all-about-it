@@ -7,12 +7,12 @@ import Popper from "@mui/material/Popper";
 import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
 import Stack from "@mui/material/Stack";
-import Select from "react-select";
-import { useNavigate } from "react-router-dom";
+// import Select from "react-select";
+// import { useNavigate } from "react-router-dom";
 
 export default function MenuListComposition(articles) {
-  const [open, setOpen] = useState(false);
   const [arts, setArts] = useState(articles);
+  const [open, setOpen] = useState(false);
   const anchorRef = useRef(null);
 
   const handleToggle = () => {
