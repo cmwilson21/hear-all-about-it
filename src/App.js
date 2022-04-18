@@ -4,11 +4,12 @@ import { Routes, BrowserRouter as Router, Route } from "react-router-dom";
 import NavBar from "./components/static/NavBar";
 import Home from "./components/static/Home";
 import ArticleList from "./components/articles/ArticleList";
-import { API_KEY } from "./Globals";
+// import { API_KEY } from "./Globals";
+import { apiUrl } from "./Globals";
 
 function App() {
   const [articles, setArticles] = useState([]);
-  const apiUrl = `https://newsapi.org/v2/top-headlines?sources=bbc-news,abc-news,fox-news,reuters,the-washington-post,politico,cbs-news,associated-press,cnn&apiKey=${API_KEY}`;
+  // const apiUrl = `https://newsapi.org/v2/top-headlines?sources=bbc-news,abc-news,fox-news,reuters,the-washington-post,politico,cbs-news,associated-press,cnn&apiKey=${API_KEY}`;
 
   useEffect(() => {
     const fetchArticles = async () => {

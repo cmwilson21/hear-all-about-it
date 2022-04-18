@@ -9,11 +9,29 @@ import MenuList from "@mui/material/MenuList";
 import Stack from "@mui/material/Stack";
 // import Select from "react-select";
 // import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { apiUrl } from "../../Globals";
 
 export default function MenuListComposition(articles) {
-  const [arts, setArts] = useState(articles);
+  // const [arts, setArts] = useState([]);
   const [open, setOpen] = useState(false);
   const anchorRef = useRef(null);
+  const [allData, setAllData] = useState([]);
+  const [filteredData, setFilteredData] = useState(allData);
+
+  const handleFilter = (event) => {};
+
+  useEffect(() => {
+    axios(apiUrl)
+      .then((response) => {
+        console.log(response.data);
+        setAllData(response.data);
+        setFilteredData(response.data);
+      })
+      .catch((error) => {
+        console.log("Error getting fake data: " + error);
+      });
+  }, []);
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
@@ -59,20 +77,20 @@ export default function MenuListComposition(articles) {
     { label: "The Washington Post", id: "the-washington-post" },
   ];
 
-  // create function to filter the articles based on the selected source.id if the source.id is not equal to all then filter the articles based on the selected source.id
-  const filterArticles = (articles, id) => {
-    // create variable to display the articles based on the selected source.id
-    let filteredArticles = [];
-    // if the source.id is equal to all then display all the articles, else filter the articles based on the selected source.id and display those articles
+  // // create function to filter the articles based on the selected source.id if the source.id is not equal to all then filter the articles based on the selected source.id
+  // const filterArticles = (articles, id) => {
+  //   // create variable to display the articles based on the selected source.id
+  //   let filteredArticles = [];
+  //   // if the source.id is equal to all then display all the articles, else filter the articles based on the selected source.id and display those articles
 
-    if (id === "all") {
-      return articles;
-    } else {
-      return articles.articles.articles.filter((article) => {
-        return article.source.id === id;
-      });
-    }
-  };
+  //   if (id === "all") {
+  //     return articles;
+  //   } else {
+  //     return articles.articles.articles.filter((article) => {
+  //       return article.source.id === id;
+  //     });
+  //   }
+  // };
 
   return (
     <Stack direction="row" spacing={2}>
@@ -113,17 +131,17 @@ export default function MenuListComposition(articles) {
                   >
                     {newsSources.map((source) => (
                       <MenuItem
-                        key={source.id}
-                        onClick={() => {
-                          setOpen(false);
-                          handleClose(true);
-                          setArts(filterArticles(articles, source.id));
-                          console.log("source.id", source.id);
-                          console.log(
-                            "display",
-                            filterArticles(articles, source.id)
-                          );
-                        }}
+                      // key={source.id}
+                      // onClick={() => {
+                      //   setOpen(false);
+                      //   handleClose(true);
+                      //   setArts(filterArticles(articles, source.id));
+                      //   console.log("source.id", source.id);
+                      //   console.log(
+                      //     "display",
+                      //     filterArticles(articles, source.id)
+                      //   );
+                      // }}
                       >
                         {source.label}
                       </MenuItem>
@@ -203,9 +221,9 @@ export default function MenuListComposition(articles) {
 //     handleClose(true);
 // }}
 // >
-{
-  /* {source.label} */
-}
+// {
+/* {source.label} */
+// }
 
 // </MenuItem>
 
