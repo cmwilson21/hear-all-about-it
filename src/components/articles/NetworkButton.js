@@ -33,6 +33,16 @@ export default function MenuListComposition(articles) {
       });
   }, []);
 
+  // {
+  //   filteredData.map((article) => {
+  //     return <ArticleCard key={article.title} article={article} />;
+  //   });
+  // }
+
+  const displayData = filteredData.map((article) => {
+    return <ArticleCard key={article.title} article={article} />;
+  });
+
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
   };
